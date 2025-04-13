@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f0f8ff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AdminMainController">
+    <children>
+        <Text fill="#1e90ff" layoutX="150.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin Dashboard" wrappingWidth="300.0">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Text>
+
+        <VBox alignment="CENTER" layoutX="200.0" layoutY="100.0" spacing="20.0">
+            <Button fx:id="manageAppointmentsButton" mnemonicParsing="false" onAction="#GoToManageAppointments" 
+                    prefHeight="40.0" prefWidth="200.0" text="Manage Appointments" 
+                    style="-fx-background-color: #1e90ff; -fx-text-fill: white;"/>
+            
+            <Button fx:id="managePrescriptionsButton" mnemonicParsing="false" onAction="#GoToManagePrescriptions" 
+                    prefHeight="40.0" prefWidth="200.0" text="Manage Prescriptions" 
+                    style="-fx-background-color: #1e90ff; -fx-text-fill: white;"/>
+        </VBox>
+    </children>
+</AnchorPane> 

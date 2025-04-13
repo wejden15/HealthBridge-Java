@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="updateCommandePane" prefHeight="574.0" prefWidth="811.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.updateCommandeController">
+    <children>
+        <Label layoutX="256.8" layoutY="47.6" prefHeight="66.0" prefWidth="297.0" text="Modifier une Commande" AnchorPane.bottomAnchor="462.0" AnchorPane.leftAnchor="256.8" AnchorPane.rightAnchor="257.5999999999999" AnchorPane.topAnchor="47.6">
+            <font>
+                <Font name="Cambria Bold" size="26.0" />
+            </font>
+        </Label>
+        <VBox layoutX="166.0" layoutY="171.0" prefHeight="322.0" prefWidth="442.0">
+            <children>
+                <HBox prefHeight="34.0" prefWidth="442.0">
+                    <children>
+                        <Label prefHeight="31.0" prefWidth="122.0" styleClass="label-ajout" stylesheets="@hello-view.css" text="Produit :" />
+                        <Pane prefHeight="111.0" prefWidth="74.0" />
+                        <ComboBox fx:id="txtProduit" prefHeight="30.0" prefWidth="232.0" promptText="Veuillez choisir le produit" styleClass="textfield" stylesheets="@hello-view.css" />
+                    </children>
+                </HBox>
+                <Pane prefHeight="15.0" prefWidth="382.0" />
+                <HBox prefHeight="34.0" prefWidth="442.0">
+                    <children>
+                        <Label prefHeight="31.0" prefWidth="170.0" styleClass="label-ajout" stylesheets="@hello-view.css" text="Date :" />
+                        <Pane prefHeight="34.0" prefWidth="27.0" />
+                        <DatePicker fx:id="txtDate" prefHeight="32.0" prefWidth="234.0" promptText="Veuillez choisir la date" styleClass="textfield" stylesheets="@hello-view.css" />
+                    </children>
+                </HBox>
+                <Pane prefHeight="15.0" prefWidth="382.0" />
+                <HBox prefHeight="34.0" prefWidth="442.0">
+                    <children>
+                        <Label prefHeight="31.0" prefWidth="170.0" styleClass="label-ajout" stylesheets="@hello-view.css" text="Totale :" />
+                        <Pane prefHeight="34.0" prefWidth="27.0" />
+                        <TextField fx:id="txtTotale" prefHeight="30.0" prefWidth="234.0" promptText="Totale                                        en DT" styleClass="textfield" stylesheets="@hello-view.css" />
+                    </children>
+                </HBox>
+                <Pane prefHeight="15.0" prefWidth="382.0" />
+                <HBox prefHeight="34.0" prefWidth="442.0">
+                    <children>
+                        <Label prefHeight="31.0" prefWidth="170.0" styleClass="label-ajout" stylesheets="@hello-view.css" text="Statut :" />
+                        <Pane prefHeight="34.0" prefWidth="27.0" />
+                        <ComboBox fx:id="txtStatut" prefHeight="31.0" prefWidth="234.0" promptText="Veuillez choisir le statut" styleClass="comboBox" stylesheets="@hello-view.css" />
+                    </children>
+                </HBox>
+                <Pane prefHeight="80.0" prefWidth="442.0" />
+                <HBox prefHeight="34.0" prefWidth="220.0">
+                    <children>
+                        <Pane prefHeight="34.0" prefWidth="39.0" />
+                        <Button fx:id="btnClearCommande" mnemonicParsing="false" onAction="#clearFieldsCommande" prefHeight="34.0" prefWidth="161.0" styleClass="btn" stylesheets="@hello-view.css" text="Annuler" />
+                        <Pane prefHeight="34.0" prefWidth="58.0" />
+                        <Button fx:id="btnUpdateCommande" mnemonicParsing="false" onAction="#UpdateCommande" prefHeight="34.0" prefWidth="161.0" styleClass="btn" stylesheets="@hello-view.css" text="Modifier" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
