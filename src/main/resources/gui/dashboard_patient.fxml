@@ -1,0 +1,28 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="gui.PatientDashboardController"
+            style="-fx-padding: 20; -fx-background-color: #f0f4f7;">
+
+    <top>
+        <Label text="Welcome, [Patient Name]!"
+               style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-padding: 10;"
+               BorderPane.alignment="CENTER" />
+    </top>
+
+    <center>
+        <VBox spacing="20" alignment="CENTER">
+            <Button text="Notification" style="-fx-font-size: 14px; -fx-pref-width: 200;" />
+            <Button text="Commande" style="-fx-font-size: 14px; -fx-pref-width: 200;" />
+            <Button text="Logout" style="-fx-font-size: 14px; -fx-pref-width: 200;" />
+        </VBox>
+    </center>
+
+</BorderPane>
+

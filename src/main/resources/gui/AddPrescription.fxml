@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f0f8ff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AddPrescriptionController">
+    <children>
+        <Text fill="#1e90ff" layoutX="200.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Prescription" wrappingWidth="200.0">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Text>
+
+        <VBox layoutX="50.0" layoutY="80.0" spacing="20.0">
+            <Label text="Medical Details:" style="-fx-text-fill: #1e90ff; -fx-font-size: 14;"/>
+            <TextArea fx:id="medicalDetailsArea" prefHeight="100.0" prefWidth="500.0" 
+                     style="-fx-background-color: white; -fx-border-color: #1e90ff; -fx-border-radius: 5;"/>
+
+            <Label text="Doctor's Notes:" style="-fx-text-fill: #1e90ff; -fx-font-size: 14;"/>
+            <TextArea fx:id="doctorNotesArea" prefHeight="100.0" prefWidth="500.0" 
+                     style="-fx-background-color: white; -fx-border-color: #1e90ff; -fx-border-radius: 5;"/>
+        </VBox>
+
+        <HBox layoutX="200.0" layoutY="350.0" spacing="20.0">
+            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#savePrescription" 
+                    prefHeight="40.0" prefWidth="100.0" text="Save" 
+                    style="-fx-background-color: #1e90ff; -fx-text-fill: white;"/>
+            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancel" 
+                    prefHeight="40.0" prefWidth="100.0" text="Cancel" 
+                    style="-fx-background-color: #ff4444; -fx-text-fill: white;"/>
+        </HBox>
+    </children>
+</AnchorPane> 

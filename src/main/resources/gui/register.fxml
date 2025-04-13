@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.collections.FXCollections?>
+
+<?import java.lang.String?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="gui.RegisterController"
+      spacing="15"
+      alignment="CENTER"
+      style="-fx-background-color: #f4f4f4; -fx-padding: 40;">
+
+    <Label text="Sign Up" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+
+    <TextField fx:id="fullnameField" promptText="Full Name" />
+    <TextField fx:id="usernameField" promptText="Username" />
+    <PasswordField fx:id="passwordField" promptText="Password" />
+
+    <ComboBox fx:id="roleComboBox" promptText="Select Role">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Doctor" />
+                <String fx:value="Patient" />
+                <String fx:value="Admin" />
+            </FXCollections>
+        </items>
+    </ComboBox>
+
+    <Button text="Register"
+            onAction="#handleRegister"
+            style="-fx-background-color: #2196F3; -fx-text-fill: white;" />
+
+    <Hyperlink text="Already have an account? Login"
+               onAction="#switchToLogin" />
+</VBox>
