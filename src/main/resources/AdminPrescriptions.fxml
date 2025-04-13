@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #f0f8ff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminPrescriptionsController">
+    <children>
+        <Text fill="#1e90ff" layoutX="300.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Prescriptions" wrappingWidth="300.0">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Text>
+        
+        <ScrollPane layoutX="50.0" layoutY="80.0" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: transparent; -fx-border-color: transparent;">
+            <content>
+                <VBox fx:id="prescriptionsContainer" spacing="10.0" style="-fx-background-color: transparent;">
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                </VBox>
+            </content>
+        </ScrollPane>
+        
+        <HBox layoutX="50.0" layoutY="500.0" spacing="20.0">
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#GoToAdminMain" 
+                    prefHeight="40.0" prefWidth="120.0" text="Back" 
+                    style="-fx-background-color: #1e90ff; -fx-text-fill: white;"/>
+            <Button fx:id="deleteAllButton" mnemonicParsing="false" onAction="#DeleteAllPrescriptions" 
+                    prefHeight="40.0" prefWidth="120.0" text="Delete All" 
+                    style="-fx-background-color: #ff4444; -fx-text-fill: white;"/>
+        </HBox>
+    </children>
+</AnchorPane> 

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f0f8ff;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AjouterAppointmentController">
+   <children>
+      <Text layoutX="150.0" layoutY="30.0" style="-fx-fill: #1e90ff;" text="Book New Appointment" wrappingWidth="300.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Label layoutX="50.0" layoutY="64.0" text="Client Name:" />
+      <TextField fx:id="tfClientName" layoutX="191.0" layoutY="50.0" prefHeight="25.0" prefWidth="200.0" promptText="Enter client name" style="-fx-background-color: white; -fx-border-color: #1e90ff;" />
+      <Label layoutX="50.0" layoutY="138.0" text="Doctor:" />
+      <ComboBox fx:id="cbDoctors" layoutX="191.0" layoutY="120.0" prefHeight="25.0" prefWidth="200.0" promptText="Select Doctor" style="-fx-background-color: white; -fx-border-color: #1e90ff;" />
+      <Label layoutX="50.0" layoutY="208.0" text="Appointment Date:" />
+      <DatePicker fx:id="dpAppointmentDate" layoutX="191.0" layoutY="190.0" prefHeight="25.0" prefWidth="200.0" promptText="Select date" style="-fx-background-color: white; -fx-border-color: #1e90ff;" />
+      <Button layoutX="191.0" layoutY="287.0" mnemonicParsing="false" onAction="#AjouterAppointment" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #1e90ff; -fx-text-fill: white; -fx-font-weight: bold;" text="Add Appointment" />
+      <Button layoutX="321.0" layoutY="287.0" mnemonicParsing="false" onAction="#AfficherAppointments" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #1e90ff; -fx-text-fill: white; -fx-font-weight: bold;" text="Show Appointments" />
+      <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#GoToMain" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #1e90ff; -fx-text-fill: white; -fx-font-weight: bold;" text="Back" />
+   </children>
+</AnchorPane> 
