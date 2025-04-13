@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.esprit.controllers.cont_take_quiz_dialog"
+      spacing="20"
+      style="-fx-background-color: white;">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Quiz Info -->
+    <VBox spacing="10" style="-fx-background-color: #E6E6FA; -fx-padding: 15; -fx-border-color: #800080; -fx-border-width: 1px;">
+        <Label fx:id="quizNameLabel" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #4B0082;"/>
+        <Label fx:id="quizTypeLabel" style="-fx-font-size: 16px; -fx-text-fill: #4B0082;"/>
+    </VBox>
+
+    <!-- Question Area -->
+    <VBox spacing="15" VBox.vgrow="ALWAYS" style="-fx-background-color: white; -fx-border-color: #800080; -fx-border-width: 1px; -fx-padding: 15;">
+        <Label fx:id="questionNumberLabel" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #4B0082;"/>
+        <Label fx:id="questionTextLabel" style="-fx-font-size: 16px; -fx-wrap-text: true;"/>
+        
+        <!-- Answers -->
+        <VBox fx:id="answersContainer" spacing="10">
+            <!-- Radio buttons will be added here dynamically -->
+        </VBox>
+    </VBox>
+
+    <!-- Navigation Buttons -->
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button fx:id="prevButton" text="Previous" onAction="#handlePreviousQuestion" style="-fx-background-color: #E6E6FA; -fx-text-fill: #4B0082;"/>
+        <Button fx:id="nextButton" text="Next" onAction="#handleNextQuestion" style="-fx-background-color: #E6E6FA; -fx-text-fill: #4B0082;"/>
+        <Button fx:id="submitButton" text="Submit" onAction="#handleSubmit" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+    </HBox>
+
+    <!-- Progress Indicator -->
+    <ProgressBar fx:id="progressBar" prefWidth="Infinity" style="-fx-accent: #4B0082;"/>
+    <Label fx:id="progressLabel" alignment="CENTER" style="-fx-text-fill: #4B0082;"/>
+</VBox> 
