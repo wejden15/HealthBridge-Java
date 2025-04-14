@@ -13,13 +13,16 @@ public class UserService {
     public UserService() {
         cnx = MyDB.getInstance().getConx();
     }
+
+
     public void ajouter(User u) {
-        String sql = "INSERT INTO user(email, roles, password) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO user(email, roles, password, full_name) VALUES (?, ?, ?, ?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(sql);
-            ps.setString(1, u.getUsername());  // store username in email
-            ps.setString(2, "[\"" + u.getRole() + "\"]"); // store as JSON array string
+            ps.setString(1, u.getUsername()); // Store username in the email column
+            ps.setString(2, "[\"" + u.getRole() + "\"]"); // Format role as JSON array
             ps.setString(3, u.getPassword());
+            ps.setString(4, u.getFullName()); // Include full name
             ps.executeUpdate();
             System.out.println("User added successfully.");
         } catch (SQLException e) {
@@ -27,21 +30,37 @@ public class UserService {
         }
     }
 
-
-
-    public boolean login(String username, String password) {
+    public User login(String username, String password) {
         String sql = "SELECT * FROM user WHERE email = ? AND password = ?";
         try {
             PreparedStatement ps = cnx.prepareStatement(sql);
             ps.setString(1, username);
             ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
-            return rs.next(); // login successful if user exists
+
+            if (rs.next()) {
+                String rolesJson = rs.getString("roles");
+                String role = parseRoleFromJson(rolesJson);
+                return new User(
+                        rs.getInt("id"),
+                        rs.getString("full_name"),
+                        rs.getString("email"),  // username is stored in email column
+                        rs.getString("password"),
+                        role
+                );
+            }
+            return null;
         } catch (SQLException e) {
             System.out.println("Login error: " + e.getMessage());
-            return false;
+            return null;
         }
     }
+
+    private String parseRoleFromJson(String rolesJson) {
+        if (rolesJson == null || rolesJson.isEmpty()) return "USER";
+        return rolesJson.replaceAll("[\\[\\]\"]", "");
+    }
+
     public List<User> afficher() {
         List<User> list = new ArrayList<>();
         String sql = "SELECT * FROM user";
@@ -49,12 +68,15 @@ public class UserService {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
+                String rolesJson = rs.getString("roles");
+                String role = parseRoleFromJson(rolesJson); // Parse role from JSON
+
                 User u = new User(
                         rs.getInt("id"),
                         rs.getString("full_name"),
-                        rs.getString("username"),
+                        rs.getString("email"), // Use 'email' column as username
                         rs.getString("password"),
-                        rs.getString("role")
+                        role
                 );
                 list.add(u);
             }
@@ -63,5 +85,6 @@ public class UserService {
         }
         return list;
     }
+
 }
 

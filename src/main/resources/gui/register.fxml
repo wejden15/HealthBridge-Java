@@ -4,7 +4,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.*?>
 <?import javafx.collections.FXCollections?>
-
 <?import java.lang.String?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
@@ -22,9 +21,8 @@
     <ComboBox fx:id="roleComboBox" promptText="Select Role">
         <items>
             <FXCollections fx:factory="observableArrayList">
-                <String fx:value="Doctor" />
-                <String fx:value="Patient" />
-                <String fx:value="Admin" />
+                <String fx:value="Patient"/> <!-- Use fx:value -->
+                <String fx:value="Doctor"/>  <!-- Use fx:value -->
             </FXCollections>
         </items>
     </ComboBox>

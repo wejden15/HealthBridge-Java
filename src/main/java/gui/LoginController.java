@@ -1,7 +1,10 @@
 package gui;
 
+import entities.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
@@ -20,29 +23,36 @@ public class LoginController {
 
 
 
+
+
     @FXML
     void handleLogin(ActionEvent event) {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
         UserService us = new UserService();
-        boolean success = us.login(username, password);
+        User user = us.login(username, password);
 
-        if (success) {
-            System.out.println("Login successful!");
-
+        if (user != null) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("dashboard.fxml")); // or any other view
-                Scene scene = new Scene(loader.load());
-                Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-                stage.setScene(scene);
+                String fxmlFile;
+                if (user.getRole().equalsIgnoreCase("Admin")) {
+                    fxmlFile = "dashboard_admin.fxml";
+                } else {
+                    fxmlFile = "dashboard_patient.fxml";
+                }
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+                Parent root = loader.load();
+
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(new Scene(root));
                 stage.setTitle("Dashboard");
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         } else {
-            System.out.println("Login failed!");
+            // Show error alert
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Login Failed");
             alert.setHeaderText(null);
@@ -50,8 +60,6 @@ public class LoginController {
             alert.showAndWait();
         }
     }
-
-
 
     @FXML
     void switchToRegister(ActionEvent event) {

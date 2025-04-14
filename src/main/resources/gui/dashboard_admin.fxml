@@ -3,24 +3,43 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
 
-<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
       fx:controller="gui.AdminDashboardController"
-      spacing="20" padding="20"
-      style="-fx-background-color: #ffffff;">
+      spacing="20"
+      alignment="CENTER_LEFT"
+      style="-fx-padding: 20; -fx-background-color: #f5f5f5;">
 
-    <Label text="Admin Dashboard - Doctor Approval"
-           style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+    <Label text="Admin Dashboard" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
 
-    <TableView fx:id="doctorTable" prefHeight="300">
+    <TableView fx:id="doctorTableView">
         <columns>
-            <TableColumn text="ID" prefWidth="50" />
-            <TableColumn text="Name" prefWidth="150" />
-            <TableColumn text="Email" prefWidth="200" />
-            <TableColumn text="Action" prefWidth="100" />
+            <TableColumn text="Email" prefWidth="250">
+                <cellValueFactory>
+                    <PropertyValueFactory property="username"/>
+                </cellValueFactory>
+            </TableColumn>
         </columns>
     </TableView>
 
-    <Button text="Logout" style="-fx-pref-width: 100;" />
-</VBox>
+    <GridPane hgap="10" vgap="10">
+        <Label text="Specialty:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <TextField fx:id="specialtyField" GridPane.columnIndex="1" GridPane.rowIndex="0" prefWidth="200"/>
 
+        <Label text="Profile Picture:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Button text="Choose Image" onAction="#handleChooseImage"/>
+            <ImageView fx:id="imagePreview" fitWidth="100" fitHeight="100"/>
+        </HBox>
+
+        <Button text="Approve Doctor"
+                onAction="#handleApproveDoctor"
+                GridPane.columnIndex="1" GridPane.rowIndex="2"
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+    </GridPane>
+
+    <Button text="Logout" style="-fx-min-width: 200px;" onAction="#handleLogout"/>
+</VBox>

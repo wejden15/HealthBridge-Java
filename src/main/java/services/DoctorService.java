@@ -15,6 +15,17 @@ public class DoctorService implements Service<Doctor> {
         cnx = MyDB.getInstance().getConx();
     }
 
+    public void addDoctor(Doctor doctor) {
+        String sql = "INSERT INTO doctor (name, specialty, picture) VALUES (?, ?, ?)";
+        try (PreparedStatement ps = cnx.prepareStatement(sql)) {
+            ps.setString(1, doctor.getName());
+            ps.setString(2, doctor.getSpecialty());
+            ps.setString(3, doctor.getPicture());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error adding doctor: " + e.getMessage());
+        }
+    }
     @Override
     public void ajouter(Doctor doctor) throws SQLException {
         String sql = "insert into doctor(name, specialty, picture) " +

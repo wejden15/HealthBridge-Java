@@ -2,11 +2,17 @@ package gui;
 
 import entities.User;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
+import javafx.stage.Stage;
 import services.UserService;
+
+import java.io.IOException;
 
 public class RegisterController {
 
@@ -21,8 +27,9 @@ public class RegisterController {
     private PasswordField passwordField;
 
 
-    private ComboBox<String> roleComboBox;
 
+    @FXML
+    private ComboBox<String> roleComboBox;
     @FXML
     void handleRegister(ActionEvent event) {
         String fullname = fullnameField.getText();
@@ -37,7 +44,20 @@ public class RegisterController {
 
     @FXML
     void switchToLogin(ActionEvent event) {
-        // TODO: Logic to switch to login scene
-        System.out.println("Switching to login...");
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+            Scene scene = new Scene(loader.load());
+            Stage stage = (Stage) ((Hyperlink) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.setTitle("Login");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+    @FXML
+    public void initialize() {
+        roleComboBox.getSelectionModel().selectFirst(); // Select default value
+    }
+
 }
