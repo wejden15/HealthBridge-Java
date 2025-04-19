@@ -256,3 +256,76 @@
     -fx-font-family:"Cambria";
     -fx-font-weight: 800;
 }
+.white-bg {
+    -fx-background-color: white;
+}
+
+.shadow {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0.2, 0, 4);
+}
+
+.btn {
+    -fx-background-color: #E6E6FA;
+    -fx-text-fill: #4B0082;
+    -fx-font-weight: bold;
+}
+
+.btn-add-panier {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #800080;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-table-cell-border-color: transparent;
+}
+/* === Take Quiz Dialog Styles === */
+
+.info-box {
+    -fx-background-color: #E6E6FA;
+    -fx-padding: 15;
+    -fx-border-color: #800080;
+    -fx-border-width: 1px;
+}
+
+.quiz-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4B0082;
+}
+
+.quiz-subtitle {
+    -fx-font-size: 16px;
+    -fx-text-fill: #4B0082;
+}
+
+.question-box {
+    -fx-background-color: white;
+    -fx-border-color: #800080;
+    -fx-border-width: 1px;
+    -fx-padding: 15;
+}
+
+.question-number {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4B0082;
+}
+
+.question-text {
+    -fx-font-size: 16px;
+    -fx-wrap-text: true;
+}
+
+.progress-purple {
+    -fx-accent: #4B0082;
+}
+
+.progress-label {
+    -fx-text-fill: #4B0082;
+    -fx-alignment: center;
+}

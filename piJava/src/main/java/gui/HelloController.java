@@ -33,7 +33,6 @@ public class HelloController implements Initializable {
     private Button btnQuizzes;
 
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
