@@ -8,40 +8,39 @@
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="gui.cont_take_quiz"
       spacing="20"
-      style="-fx-background-color: white;">
+      stylesheets="@../styles/quiz.css">
     <padding>
         <Insets top="20" right="20" bottom="20" left="20"/>
     </padding>
 
     <!-- Navigation Panel -->
-    <HBox spacing="10" alignment="CENTER_LEFT">
-        <Button text="Quizzes" onAction="#handleQuizNavigation" style="-fx-background-color: #E6E6FA; -fx-text-fill: #4B0082;"/>
-        <Button text="Questions" onAction="#handleQuestionNavigation" style="-fx-background-color: #E6E6FA; -fx-text-fill: #4B0082;"/>
-        <Button text="Answers" onAction="#handleAnswerNavigation" style="-fx-background-color: #E6E6FA; -fx-text-fill: #4B0082;"/>
-        <Button text="Take Quiz" onAction="#handleTakeQuizNavigation" style="-fx-background-color: #E6E6FA; -fx-text-fill: #4B0082;"/>
+    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="navigation-panel">
+        <Button text="Quizzes" onAction="#handleQuizNavigation"/>
+        <Button text="Questions" onAction="#handleQuestionNavigation"/>
+        <Button text="Answers" onAction="#handleAnswerNavigation"/>
+        <Button text="Take Quiz" onAction="#handleTakeQuizNavigation"/>
+        <Button text="Export PDF" onAction="#handleExportPdf" styleClass="action-button-edit"/>
     </HBox>
 
     <!-- Quiz Table -->
-    <TableView fx:id="quizTable" VBox.vgrow="ALWAYS" style="-fx-background-color: white; -fx-border-color: #800080; -fx-border-width: 2px;">
+    <TableView fx:id="quizTable" VBox.vgrow="ALWAYS" styleClass="table-view">
         <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
         </columnResizePolicy>
-        <style>
-            -fx-background-color: white;
-            -fx-table-cell-border-color: transparent;
-            -fx-border-color: #800080;
-            -fx-border-width: 2px;
-            -fx-border-radius: 5px;
-        </style>
         <columns>
-            <TableColumn fx:id="nameColumn" text="Quiz Name" prefWidth="200" style="-fx-background-color: #E6E6FA; -fx-text-fill: #4B0082;"/>
-            <TableColumn fx:id="typeColumn" text="Quiz Type" prefWidth="150" style="-fx-background-color: #E6E6FA; -fx-text-fill: #4B0082;"/>
-            <TableColumn fx:id="actionColumn" text="Actions" prefWidth="150" style="-fx-background-color: #E6E6FA; -fx-text-fill: #4B0082;">
-                <style>
-                    -fx-background-color: #E6E6FA;
-                    -fx-text-fill: #4B0082;
-                </style>
-            </TableColumn>
+            <TableColumn fx:id="nameColumn" text="Quiz Name" prefWidth="200"/>
+            <TableColumn fx:id="typeColumn" text="Quiz Type" prefWidth="150"/>
+            <TableColumn fx:id="actionColumn" text="Actions" prefWidth="150"/>
         </columns>
     </TableView>
+
+    <!-- Quiz Taking Interface -->
+    <VBox fx:id="quizTakingContainer" styleClass="quiz-container" visible="false">
+        <Label fx:id="questionText" styleClass="question-text" wrapText="true"/>
+        <VBox fx:id="answerOptions" spacing="10">
+            <!-- Answer options will be added dynamically -->
+        </VBox>
+        <ProgressIndicator fx:id="progressIndicator" styleClass="progress-indicator"/>
+        <Label fx:id="scoreDisplay" styleClass="score-display" visible="false"/>
+    </VBox>
 </VBox> 

@@ -256,3 +256,201 @@
     -fx-font-family:"Cambria";
     -fx-font-weight: 800;
 }
+
+.btn-add-panier shadow {
+}
+
+/* Add these to your existing CSS */
+
+/* Main dashboard containers */
+
+/* ===== Enhanced Dashboard Styles ===== */
+.dashboard-container {
+    -fx-background-color: #f8f9fa;
+    -fx-padding: 30px;
+    -fx-spacing: 25px;
+}
+.dashboard-title {
+    -fx-font-size: 24px;
+    -fx-text-fill: #2c3e50;
+    -fx-font-weight: 700;
+    -fx-font-family: "Segoe UI Semibold";
+}
+
+.dashboard-card {
+    -fx-background-color: white;
+    -fx-background-radius: 15px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 12, 0.0, 0, 4);
+    -fx-padding: 25px;
+}
+/* Table improvements */
+.table-view .column-header-background {
+    -fx-background-color: #0033c2;
+    -fx-background-radius: 15px 15px 0 0;
+}
+
+.table-view .table-row-cell {
+    -fx-background-color: white;
+    -fx-border-color: transparent;
+}
+
+.table-view .table-row-cell:odd {
+    -fx-background-color: #f8f9fa;
+}
+
+/* Form elements */
+.form-pane {
+    -fx-background-color: white;
+    -fx-background-radius: 15px;
+    -fx-padding: 25px;
+    -fx-spacing: 15px;
+}
+
+/* Image preview enhancement */
+.image-preview {
+    -fx-border-color: #0033c2;
+    -fx-border-radius: 10px;
+    -fx-border-width: 2px;
+}
+
+/* Button spacing */
+.button-container {
+    -fx-spacing: 15px;
+    -fx-padding: 20px 0;
+}
+
+/* Responsive text sizes */
+.dashboard-title {
+    -fx-font-size: 28px;
+    -fx-text-fill: #0033c2;
+    -fx-font-weight: bold;
+}
+
+/* Hover effects */
+.button:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 5);
+}
+
+.enhanced-table {
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.enhanced-table .table-row-cell {
+    -fx-background-color: #ffffff;
+    -fx-border-color: transparent;
+    -fx-padding: 12px;
+}
+
+.enhanced-table .table-row-cell:odd {
+    -fx-background-color: #fafafa;
+}
+
+.enhanced-table .table-row-cell:selected {
+    -fx-background-color: #e3f2fd;
+}
+
+/* Modern Input Fields */
+.modern-input {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #b0bec5;
+    -fx-border-radius: 8px;
+    -fx-padding: 12px;
+    -fx-font-size: 14px;
+}
+
+.modern-input:focused {
+    -fx-border-color: #0033c2;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,51,194,0.15), 6, 0.0, 0, 2);
+}
+
+/* Image Upload Section */
+.image-upload-box {
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 12px;
+    -fx-padding: 20px;
+    -fx-alignment: CENTER;
+}
+
+.image-preview {
+    -fx-border-color: #cfd8dc;
+    -fx-border-radius: 12px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 8, 0.0, 0, 2);
+}
+
+/* Service Buttons */
+.service-btn {
+    -fx-background-color: #0033c2;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-padding: 15px 25px;
+    -fx-background-radius: 10px;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.service-btn FontAwesomeIconView {
+    -fx-fill: white;
+    -fx-font-size: 16px;
+}
+
+.emergency-btn {
+    -fx-background-color: #dc3545;
+    -fx-text-fill: white;
+    -fx-background-radius: 10px;
+    -fx-padding: 15px 25px;
+}
+
+.emergency-btn:hover {
+    -fx-background-color: #c82333;
+}
+
+/* Health Metrics */
+.health-card {
+    -fx-background-color: #f8f9fa;
+    -fx-background-radius: 12px;
+    -fx-padding: 20px;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 12px;
+}
+
+.health-metric-label {
+    -fx-text-fill: #607d8b;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+}
+
+.health-metric-value {
+    -fx-text-fill: #2c3e50;
+    -fx-font-size: 22px;
+    -fx-font-weight: 700;
+}
+
+/* Success Elements */
+.success-btn {
+    -fx-background-color: #28a745;
+    -fx-text-fill: white;
+}
+
+.success-btn:hover {
+    -fx-background-color: #218838;
+}
+
+/* Smooth Transitions */
+.button, .text-field, .table-view {
+    -fx-transition: all 0.3s ease;
+}
+
+/* Modern Scrollbar */
+.scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #cfd8dc;
+    -fx-background-radius: 4px;
+}
+
+.scroll-bar:vertical .thumb:hover {
+    -fx-background-color: #b0bec5;
+}

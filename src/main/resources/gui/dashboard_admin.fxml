@@ -4,20 +4,23 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
-
 <?import javafx.scene.control.cell.PropertyValueFactory?>
+
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="gui.AdminDashboardController"
       spacing="20"
-      alignment="CENTER_LEFT"
-      style="-fx-padding: 20; -fx-background-color: #f5f5f5;">
+      styleClass="nav-form white-bg shadow"
+      style="-fx-padding: 30; -fx-background-radius: 15;">
 
-    <Label text="Admin Dashboard" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+    <HBox spacing="20" alignment="CENTER_LEFT">
+        <Label text="Admin Dashboard" styleClass="label-item" style="-fx-font-size: 28px;"/>
+        <Button text="Logout" onAction="#handleLogout" styleClass="btn shadow"/>
+    </HBox>
 
-    <TableView fx:id="doctorTableView">
+    <TableView fx:id="doctorTableView" styleClass="table-view shadow">
         <columns>
-            <TableColumn text="Email" prefWidth="250">
+            <TableColumn text="Email" prefWidth="250" styleClass="column-header">
                 <cellValueFactory>
                     <PropertyValueFactory property="username"/>
                 </cellValueFactory>
@@ -25,21 +28,23 @@
         </columns>
     </TableView>
 
-    <GridPane hgap="10" vgap="10">
-        <Label text="Specialty:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-        <TextField fx:id="specialtyField" GridPane.columnIndex="1" GridPane.rowIndex="0" prefWidth="200"/>
+    <GridPane hgap="15" vgap="15" styleClass="white-bg" style="-fx-padding: 20; -fx-background-radius: 15;">
+        <Label text="Specialty:" styleClass="label-ajout" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <TextField fx:id="specialtyField" styleClass="textfield" GridPane.columnIndex="1" GridPane.rowIndex="0" prefWidth="250"/>
 
-        <Label text="Profile Picture:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-        <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="1">
-            <Button text="Choose Image" onAction="#handleChooseImage"/>
-            <ImageView fx:id="imagePreview" fitWidth="100" fitHeight="100"/>
-        </HBox>
+        <Label text="Profile Picture:" styleClass="label-ajout" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <VBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Button text="Choose Image" onAction="#handleChooseImage" styleClass="import-btn shadow"/>
+                <ImageView fx:id="imagePreview" fitWidth="100" fitHeight="100" styleClass="fruit-item shadow"/>
+            </HBox>
+            <Label text="Supported formats: PNG, JPG" style="-fx-text-fill: #666; -fx-font-size: 12px;"/>
+        </VBox>
 
         <Button text="Approve Doctor"
                 onAction="#handleApproveDoctor"
+                styleClass="btn-add-panier shadow"
                 GridPane.columnIndex="1" GridPane.rowIndex="2"
-                style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+                style="-fx-font-size: 16px; -fx-padding: 8 25;"/>
     </GridPane>
-
-    <Button text="Logout" style="-fx-min-width: 200px;" onAction="#handleLogout"/>
 </VBox>

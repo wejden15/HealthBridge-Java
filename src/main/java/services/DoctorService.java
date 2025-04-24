@@ -26,6 +26,28 @@ public class DoctorService implements Service<Doctor> {
             throw new RuntimeException("Error adding doctor: " + e.getMessage());
         }
     }
+
+    public Doctor getDoctorByName(String name) {
+        String sql = "SELECT * FROM doctor WHERE name = ?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(sql);
+            ps.setString(1, name);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return new Doctor(
+                        rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getString("specialty"),
+                        rs.getString("picture")
+                );
+            }
+            return null;
+        } catch (SQLException e) {
+            System.out.println("Error fetching doctor: " + e.getMessage());
+            return null;
+        }
+    }
     @Override
     public void ajouter(Doctor doctor) throws SQLException {
         String sql = "insert into doctor(name, specialty, picture) " +

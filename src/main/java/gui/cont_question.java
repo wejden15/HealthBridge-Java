@@ -2,10 +2,12 @@ package gui;
 
 import entities.question;
 import entities.quiz;
+import javafx.scene.input.KeyCombination;
 import services.QuestionService;
 import services.QuizService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,12 +19,14 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import javafx.geometry.Insets;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 
 public class cont_question implements Initializable {
     @FXML
@@ -35,16 +39,23 @@ public class cont_question implements Initializable {
     private TableColumn<question, Void> actionColumn;
     @FXML
     private Button createQuestionButton;
+    @FXML
+    private TextField searchField;
+    @FXML
+    private ComboBox<String> searchTypeComboBox;
 
     private final QuestionService questionService = new QuestionService();
     private final QuizService quizService = new QuizService();
     private final ObservableList<question> questionList = FXCollections.observableArrayList();
     private final Map<Integer, String> quizNames = new HashMap<>();
+    private FilteredList<question> filteredQuestions;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        setupTableColumns();
         loadQuizzes();
+        setupTableColumns();
+        setupSearchControls();
+        setupSearch();
         loadQuestions();
     }
 
@@ -100,6 +111,70 @@ public class cont_question implements Initializable {
         });
     }
 
+    private void setupSearchControls() {
+        // Initialize the search type combo box
+        searchTypeComboBox.getItems().addAll("Question Text", "Quiz Name");
+        searchTypeComboBox.setValue("Question Text");
+        
+        // Add listener for sorting
+        searchTypeComboBox.setOnAction(event -> {
+            String sortType = searchTypeComboBox.getValue();
+            switch (sortType) {
+                case "Question Text":
+                    questionList.sort((q1, q2) -> q1.getText().compareToIgnoreCase(q2.getText()));
+                    break;
+                case "Quiz Name":
+                    questionList.sort((q1, q2) -> {
+                        String quiz1Name = quizNames.get(q1.getquiz_id());
+                        String quiz2Name = quizNames.get(q2.getquiz_id());
+                        return quiz1Name.compareToIgnoreCase(quiz2Name);
+                    });
+                    break;
+            }
+            questionTable.setItems(questionList);
+        });
+    }
+
+    private void setupSearch() {
+        // Initialize filtered list
+        filteredQuestions = new FilteredList<>(questionList, p -> true);
+        
+        // Add listener to search field
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredQuestions.setPredicate(createPredicate(newValue));
+        });
+
+        // Add listener to search type combo box
+        searchTypeComboBox.valueProperty().addListener((observable, oldValue, newValue) -> {
+            filteredQuestions.setPredicate(createPredicate(searchField.getText()));
+        });
+
+        // Bind the filtered list to the table
+        questionTable.setItems(filteredQuestions);
+    }
+
+    private Predicate<question> createPredicate(String searchText) {
+        return question -> {
+            if (searchText == null || searchText.isEmpty()) return true;
+            
+            String lowerCaseFilter = searchText.toLowerCase();
+            String searchType = searchTypeComboBox.getValue();
+
+            // Get quiz name for the question
+            String quizName = quizNames.get(question.getquiz_id());
+
+            switch (searchType) {
+                case "Question Text":
+                    return question.getText().toLowerCase().contains(lowerCaseFilter);
+                case "Quiz":
+                    return quizName != null && quizName.toLowerCase().contains(lowerCaseFilter);
+                default: // "All"
+                    return question.getText().toLowerCase().contains(lowerCaseFilter)
+                        || (quizName != null && quizName.toLowerCase().contains(lowerCaseFilter));
+            }
+        };
+    }
+
     private void loadQuizzes() {
         for (quiz q : quizService.rechercher()) {
             quizNames.put(q.getId(), q.getName());
@@ -109,7 +184,6 @@ public class cont_question implements Initializable {
     private void loadQuestions() {
         questionList.clear();
         questionList.addAll(questionService.rechercher());
-        questionTable.setItems(questionList);
     }
 
     private void deleteQuestion(question question) {
@@ -129,8 +203,17 @@ public class cont_question implements Initializable {
     private void showUpdateDialog(question question) {
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.setTitle("Update Question");
-        dialog.setHeaderText("Update question details");
+        dialog.setHeaderText(null);
+        
+        // Apply CSS styling
+        DialogPane dialogPane = dialog.getDialogPane();
+        dialogPane.getStylesheets().add(getClass().getResource("/styles/quiz.css").toExternalForm());
+        dialogPane.getStyleClass().add("custom-dialog");
 
+        // Create form container with proper styling
+        VBox formContainer = new VBox(15);
+        formContainer.getStyleClass().add("dialog-form");
+        formContainer.setPadding(new Insets(20, 20, 10, 10));
 
         TextArea questionText = new TextArea(question.getText());
         questionText.setPromptText("Enter question text");
@@ -141,14 +224,13 @@ public class cont_question implements Initializable {
         quizComboBox.getItems().addAll(quizNames.values());
         quizComboBox.setValue(quizNames.get(question.getquiz_id()));
 
-        dialog.getDialogPane().setContent(new VBox(10, 
+        formContainer.getChildren().addAll(
             new Label("Question Text:"), questionText,
             new Label("Quiz:"), quizComboBox
-        ));
+        );
 
-
+        dialog.getDialogPane().setContent(formContainer);
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
-
 
         dialog.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
@@ -156,16 +238,14 @@ public class cont_question implements Initializable {
                 String selectedQuizName = quizComboBox.getValue();
 
                 if (text.isEmpty() || selectedQuizName == null) {
-                    showAlert("Error", "Please fill in all fields");
+                    showStyledAlert("Error", "Please fill in all fields", Alert.AlertType.ERROR);
                     return;
                 }
-
 
                 if (!text.endsWith("?")) {
-                    showAlert("Error", "Question must end with a question mark (?)");
+                    showStyledAlert("Error", "Question must end with a question mark (?)", Alert.AlertType.ERROR);
                     return;
                 }
-
 
                 int quizId = -1;
                 for (Map.Entry<Integer, String> entry : quizNames.entrySet()) {
@@ -176,10 +256,9 @@ public class cont_question implements Initializable {
                 }
 
                 if (quizId == -1) {
-                    showAlert("Error", "Invalid quiz selection");
+                    showStyledAlert("Error", "Invalid quiz selection", Alert.AlertType.ERROR);
                     return;
                 }
-
 
                 question.setText(text);
                 question.setQuiz_id(quizId);
@@ -191,11 +270,19 @@ public class cont_question implements Initializable {
 
     @FXML
     private void handleCreateQuestion() {
-
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.setTitle("Create New Questions");
-        dialog.setHeaderText("Enter question details");
+        dialog.setHeaderText(null);
+        
+        // Apply CSS styling
+        DialogPane dialogPane = dialog.getDialogPane();
+        dialogPane.getStylesheets().add(getClass().getResource("/styles/quiz.css").toExternalForm());
+        dialogPane.getStyleClass().add("custom-dialog");
 
+        // Create form container with proper styling
+        VBox formContainer = new VBox(15);
+        formContainer.getStyleClass().add("dialog-form");
+        formContainer.setPadding(new Insets(20, 20, 10, 10));
 
         TextArea questionText = new TextArea();
         questionText.setPromptText("Enter questions (one per line). Each question must end with a question mark (?)");
@@ -205,15 +292,13 @@ public class cont_question implements Initializable {
         quizComboBox.setPromptText("Select Quiz");
         quizComboBox.getItems().addAll(quizNames.values());
 
-
-        dialog.getDialogPane().setContent(new VBox(10, 
+        formContainer.getChildren().addAll(
             new Label("Questions (one per line):"), questionText,
             new Label("Quiz:"), quizComboBox
-        ));
+        );
 
-
+        dialog.getDialogPane().setContent(formContainer);
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
-
 
         dialog.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
@@ -221,10 +306,9 @@ public class cont_question implements Initializable {
                 String selectedQuizName = quizComboBox.getValue();
 
                 if (questions.length == 0 || selectedQuizName == null) {
-                    showAlert("Error", "Please fill in all fields");
+                    showStyledAlert("Error", "Please fill in all fields", Alert.AlertType.ERROR);
                     return;
                 }
-
 
                 int quizId = -1;
                 for (Map.Entry<Integer, String> entry : quizNames.entrySet()) {
@@ -235,7 +319,7 @@ public class cont_question implements Initializable {
                 }
 
                 if (quizId == -1) {
-                    showAlert("Error", "Invalid quiz selection");
+                    showStyledAlert("Error", "Invalid quiz selection", Alert.AlertType.ERROR);
                     return;
                 }
 
@@ -254,7 +338,7 @@ public class cont_question implements Initializable {
                 }
 
                 if (hasInvalidQuestions) {
-                    showAlert("Error", "The following questions must end with a question mark (?):\n\n" + invalidQuestions);
+                    showStyledAlert("Error", "The following questions must end with a question mark (?):\n\n" + invalidQuestions, Alert.AlertType.ERROR);
                     return;
                 }
 
@@ -270,11 +354,17 @@ public class cont_question implements Initializable {
         });
     }
 
-    private void showAlert(String title, String content) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+    private void showStyledAlert(String title, String content, Alert.AlertType type) {
+        Alert alert = new Alert(type);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(content);
+        
+        // Apply CSS styling to the alert
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.getStylesheets().add(getClass().getResource("/styles/quiz.css").toExternalForm());
+        dialogPane.getStyleClass().add("custom-dialog");
+        
         alert.showAndWait();
     }
 
@@ -285,6 +375,9 @@ public class cont_question implements Initializable {
             Parent root = loader.load();
             Stage stage = (Stage) questionTable.getScene().getWindow();
             stage.setScene(new Scene(root));
+            stage.setFullScreenExitHint(""); // No "Press ESC to exit fullscreen" message
+            stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH); // Disable ESC key exit
+            stage.setFullScreen(true); // Go fullscreen!
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -298,6 +391,9 @@ public class cont_question implements Initializable {
             Parent root = loader.load();
             Stage stage = (Stage) questionTable.getScene().getWindow();
             stage.setScene(new Scene(root));
+            stage.setFullScreenExitHint(""); // No "Press ESC to exit fullscreen" message
+            stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH); // Disable ESC key exit
+            stage.setFullScreen(true); // Go fullscreen!
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -311,6 +407,9 @@ public class cont_question implements Initializable {
             Parent root = loader.load();
             Stage stage = (Stage) questionTable.getScene().getWindow();
             stage.setScene(new Scene(root));
+            stage.setFullScreenExitHint(""); // No "Press ESC to exit fullscreen" message
+            stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH); // Disable ESC key exit
+            stage.setFullScreen(true); // Go fullscreen!
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -327,6 +426,9 @@ public class cont_question implements Initializable {
             Parent root = FXMLLoader.load(getClass().getResource("" + fxmlFile));
             Stage stage = (Stage) questionTable.getScene().getWindow();
             stage.setScene(new Scene(root));
+            stage.setFullScreenExitHint(""); // No "Press ESC to exit fullscreen" message
+            stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH); // Disable ESC key exit
+            stage.setFullScreen(true); // Go fullscreen!
         } catch (IOException e) {
             e.printStackTrace();
         }

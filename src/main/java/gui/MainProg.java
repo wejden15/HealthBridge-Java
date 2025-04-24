@@ -6,13 +6,20 @@ import entities.quiz;
 import services.AnswerService;
 import services.QuestionService;
 import services.QuizService;
+import java.sql.Date;
 
 public class MainProg {
     public static void main(String[] args) {
+        // Create a quiz with current date
+        Date currentDate = new Date(System.currentTimeMillis());
+        quiz q = new quiz("Quiz Name", "Quiz Type", currentDate);
+        
+        // Or if you need a specific date
+        // quiz q = new quiz("Quiz Name", "Quiz Type", Date.valueOf("2024-04-27"));
+        
         // quizajout
         QuizService quizService = new QuizService();
-        quiz quiz = new quiz("Java Quiz", "single choice");
-        quizService.ajouter(quiz);
+        quizService.ajouter(q);
         System.out.println("Quizzes after adding: " + quizService.rechercher());
 
         /*/quiz update
@@ -57,7 +64,7 @@ public class MainProg {
         System.out.println("Questions after deleting: " + questionService.rechercher());
 
         // supp quiz
-        quizService.supprimer(quiz);
+        quizService.supprimer(q);
         System.out.println("Quizzes after deleting: " + quizService.rechercher());*/
     }
 }

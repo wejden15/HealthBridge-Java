@@ -11,20 +11,44 @@ import java.util.List;
 public class AppointmentService implements Service<Appointment> {
 
     private Connection cnx;
+    private GoogleCalendarService googleCalendarService;
 
     public AppointmentService() {
         cnx = MyDB.getInstance().getConx();
+        googleCalendarService = new GoogleCalendarService();
+    }
+
+    public void authorizeGoogleCalendar() throws Exception {
+        if (googleCalendarService != null) {
+            googleCalendarService.authorize();
+        }
     }
 
     @Override
     public void ajouter(Appointment appointment) throws SQLException {
         String sql = "insert into appointment(doctor_id, client_name, appointment_date) " +
                 "values(?, ?, ?)";
-        PreparedStatement ps = cnx.prepareStatement(sql);
+        PreparedStatement ps = cnx.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         ps.setInt(1, appointment.getDoctor_id());
         ps.setString(2, appointment.getClient_name());
         ps.setTimestamp(3, Timestamp.valueOf(appointment.getAppointment_date()));
         ps.executeUpdate();
+
+        // Get the generated appointment ID
+        ResultSet rs = ps.getGeneratedKeys();
+        if (rs.next()) {
+            appointment.setId(rs.getInt(1));
+        }
+
+        // Add to Google Calendar if service is available
+        if (googleCalendarService != null) {
+            try {
+                googleCalendarService.createAppointmentEvent(appointment);
+            } catch (Exception e) {
+                System.err.println("Failed to add appointment to Google Calendar: " + e.getMessage());
+                // Don't throw the exception, just log it
+            }
+        }
     }
 
     @Override

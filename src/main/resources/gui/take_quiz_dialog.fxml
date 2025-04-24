@@ -17,6 +17,7 @@
     <VBox spacing="10" style="-fx-background-color: #E6E6FA; -fx-padding: 15; -fx-border-color: #800080; -fx-border-width: 1px;">
         <Label fx:id="quizNameLabel" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #4B0082;"/>
         <Label fx:id="quizTypeLabel" style="-fx-font-size: 16px; -fx-text-fill: #4B0082;"/>
+        <Label fx:id="timerLabel" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #FF0000;"/>
     </VBox>
 
     <!-- Question Area -->

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <top>
+        <HBox style="-fx-background-color: #2a9d8f; -fx-padding: 15;">
+            <Label fx:id="doctorNameLabel" style="-fx-text-fill: white; -fx-font-size: 18; -fx-font-weight: bold;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+
+                    style="-fx-background-color: #e76f51; -fx-text-fill: white;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox style="-fx-padding: 20;">
+            <TableView fx:id="appointmentsTable">
+                <columns>
+                    <TableColumn fx:id="patientColumn" text="Patient" prefWidth="200"/>
+                    <TableColumn fx:id="dateColumn" text="Date" prefWidth="120"/>
+                    <TableColumn fx:id="timeColumn" text="Time" prefWidth="100"/>
+                    <TableColumn fx:id="statusColumn" text="Status" prefWidth="100"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>

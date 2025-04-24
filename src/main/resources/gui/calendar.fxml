@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<HBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="gui.CalendarController"
+      spacing="20"
+      style="-fx-background-color: white;">
+    
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Left side: Upcoming Quizzes -->
+    <VBox spacing="10" prefWidth="250">
+        <Label text="Upcoming Quizzes" style="-fx-font-weight: bold; -fx-font-size: 16px;"/>
+        <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+            <VBox fx:id="upcomingQuizzes" spacing="10" style="-fx-padding: 10;">
+                <!-- Upcoming quizzes will be added here dynamically -->
+            </VBox>
+        </ScrollPane>
+    </VBox>
+
+    <!-- Middle: Calendar -->
+    <VBox spacing="10">
+        <DatePicker fx:id="calendar" />
+    </VBox>
+
+    <!-- Right side: Event list -->
+    <ScrollPane fitToWidth="true">
+        <VBox fx:id="eventList" spacing="10" style="-fx-padding: 10;">
+            <!-- Quiz events will be added here dynamically -->
+        </VBox>
+    </ScrollPane>
+
+</HBox> 

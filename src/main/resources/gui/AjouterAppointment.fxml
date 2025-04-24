@@ -18,8 +18,8 @@
       <ComboBox fx:id="cbDoctors" layoutX="191.0" layoutY="120.0" prefHeight="25.0" prefWidth="200.0" promptText="Select Doctor" style="-fx-background-color: white; -fx-border-color: #1e90ff;" />
       <Label layoutX="50.0" layoutY="208.0" text="Appointment Date:" />
       <DatePicker fx:id="dpAppointmentDate" layoutX="191.0" layoutY="190.0" prefHeight="25.0" prefWidth="200.0" promptText="Select date" style="-fx-background-color: white; -fx-border-color: #1e90ff;" />
-      <Button layoutX="191.0" layoutY="287.0" mnemonicParsing="false" onAction="#AjouterAppointment" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #1e90ff; -fx-text-fill: white; -fx-font-weight: bold;" text="Add Appointment" />
-      <Button layoutX="321.0" layoutY="287.0" mnemonicParsing="false" onAction="#AfficherAppointments" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #1e90ff; -fx-text-fill: white; -fx-font-weight: bold;" text="Show Appointments" />
-      <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#GoToMain" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #1e90ff; -fx-text-fill: white; -fx-font-weight: bold;" text="Back" />
+      <Button fx:id="addAppointmentButton" layoutX="191.0" layoutY="287.0" mnemonicParsing="false" onAction="#AjouterAppointment" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #1e90ff; -fx-text-fill: white; -fx-font-weight: bold;" text="Add Appointment" />
+      <Button fx:id="showAppointmentsButton" layoutX="321.0" layoutY="287.0" mnemonicParsing="false" onAction="#AfficherAppointments" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #1e90ff; -fx-text-fill: white; -fx-font-weight: bold;" text="Show Appointments" />
+      <Button fx:id="backButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#GoToMain" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #1e90ff; -fx-text-fill: white; -fx-font-weight: bold;" text="Back" />
    </children>
 </AnchorPane> 

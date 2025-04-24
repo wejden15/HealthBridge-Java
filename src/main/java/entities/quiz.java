@@ -1,25 +1,39 @@
 package entities;
 
+import java.sql.Date;
+
 public class quiz {
 
 
     private int id;
     private String name;
     private String type;
+    private Date date;
 
-    // No-args constructor
+    // Default constructor
     public quiz() {
     }
 
-    public quiz(int id, String name, String type) {
+    // Constructor with all fields
+    public quiz(int id, String name, String type, Date date) {
         this.id = id;
         this.name = name;
         this.type = type;
+        this.date = date;
     }
 
+    // Constructor without id (for new quizzes)
+    public quiz(String name, String type, Date date) {
+        this.name = name;
+        this.type = type;
+        this.date = date;
+    }
+
+    // Constructor with just name and type (will set current date automatically)
     public quiz(String name, String type) {
         this.name = name;
         this.type = type;
+        this.date = new Date(System.currentTimeMillis());
     }
 
     public int getId() {
@@ -46,12 +60,21 @@ public class quiz {
         this.type = type;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
     @Override
     public String toString() {
         return "Quiz{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", type='" + type + '\'' +
+                ", date=" + date +
                 '}';
     }
 }

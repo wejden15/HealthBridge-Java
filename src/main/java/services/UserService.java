@@ -16,13 +16,13 @@ public class UserService {
 
 
     public void ajouter(User u) {
-        String sql = "INSERT INTO user(email, roles, password, full_name) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO user(email, roles, password) VALUES (?, ?, ?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(sql);
             ps.setString(1, u.getUsername()); // Store username in the email column
             ps.setString(2, "[\"" + u.getRole() + "\"]"); // Format role as JSON array
             ps.setString(3, u.getPassword());
-            ps.setString(4, u.getFullName()); // Include full name
+
             ps.executeUpdate();
             System.out.println("User added successfully.");
         } catch (SQLException e) {
@@ -58,6 +58,7 @@ public class UserService {
 
     private String parseRoleFromJson(String rolesJson) {
         if (rolesJson == null || rolesJson.isEmpty()) return "USER";
+        // Remove the brackets and quotes but keep the ROLE_ prefix
         return rolesJson.replaceAll("[\\[\\]\"]", "");
     }
 

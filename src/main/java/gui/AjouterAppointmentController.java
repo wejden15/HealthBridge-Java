@@ -27,10 +27,28 @@ public class AjouterAppointmentController {
     private ComboBox<Doctor> cbDoctors;
     @FXML
     private DatePicker dpAppointmentDate;
+    @FXML
+    private Button addAppointmentButton;
+    @FXML
+    private Button showAppointmentsButton;
+    @FXML
+    private Button backButton;
+
+    private AppointmentService appointmentService;
 
     @FXML
     void initialize() {
         try {
+            appointmentService = new AppointmentService();
+            
+            // Authorize Google Calendar
+            try {
+                appointmentService.authorizeGoogleCalendar();
+            } catch (Exception e) {
+                System.err.println("Failed to authorize Google Calendar: " + e.getMessage());
+                showAlert("Warning", "Google Calendar integration might not work: " + e.getMessage());
+            }
+
             DoctorService doctorService = new DoctorService();
             ObservableList<Doctor> doctors = FXCollections.observableArrayList(doctorService.recuperer());
             
@@ -72,35 +90,7 @@ public class AjouterAppointmentController {
                 }
             });
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setContentText("Error loading doctors: " + e.getMessage());
-            alert.showAndWait();
-        }
-    }
-
-    @FXML
-    public void AfficherAppointments(ActionEvent actionEvent) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("AfficherAppointment.fxml"));
-            Stage stage = (Stage) tfClientName.getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Show Appointments");
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    @FXML
-    public void GoToMain(ActionEvent actionEvent) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("MainAppointment.fxml"));
-            Stage stage = (Stage) tfClientName.getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Appointment Management System");
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
+            showAlert("Error", "Error initializing form: " + e.getMessage());
         }
     }
 
@@ -130,7 +120,6 @@ public class AjouterAppointmentController {
             return;
         }
 
-        AppointmentService appointmentService = new AppointmentService();
         try {
             LocalDate date = dpAppointmentDate.getValue();
             LocalDateTime dateTime = LocalDateTime.of(date, LocalTime.of(9, 0)); // Default to 9 AM
@@ -152,6 +141,32 @@ public class AjouterAppointmentController {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             showAlert("Error", "Error adding appointment: " + e.getMessage());
+        }
+    }
+
+    @FXML
+    public void AfficherAppointments(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AfficherAppointment.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) showAppointmentsButton.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("My Appointments");
+        } catch (IOException e) {
+            showAlert("Error", "Failed to open appointments view: " + e.getMessage());
+        }
+    }
+
+    @FXML
+    public void GoToMain(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("MainAppointment.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) backButton.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Appointment Management");
+        } catch (IOException e) {
+            showAlert("Error", "Failed to return to main menu: " + e.getMessage());
         }
     }
 
