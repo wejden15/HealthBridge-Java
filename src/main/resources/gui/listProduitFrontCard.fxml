@@ -52,14 +52,17 @@
                 </HBox>
                 <HBox prefHeight="100.0" prefWidth="200.0">
                     <children>
-                        <Pane prefHeight="112.0" prefWidth="53.0" />
-                        <ImageView fx:id="labelImg" fitHeight="112.0" fitWidth="149.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="labelImg" fitHeight="112.0" fitWidth="158.0" pickOnBounds="true" preserveRatio="true" />
+                  <Pane prefHeight="200.0" prefWidth="200.0" />
+                  <ImageView fx:id="qrCodeImg" fitHeight="76.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true" />
                     </children>
                 </HBox>
                 <Pane prefHeight="9.0" prefWidth="255.0" />
                 <HBox alignment="CENTER" prefHeight="28.0" prefWidth="255.0">
                     <children>
                         <Button mnemonicParsing="false" onAction="#ajouterCommande" prefHeight="30.0" prefWidth="123.0" styleClass="btn" stylesheets="@hello-view.css" text="Commandez" />
+                  <Pane prefHeight="30.0" prefWidth="28.0" />
+                  <Button mnemonicParsing="false" onAction="#generateQrCode" styleClass="btn" stylesheets="@hello-view.css" text="QrCode" />
                     </children>
                 </HBox>
             </children>

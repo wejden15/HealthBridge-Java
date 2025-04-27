@@ -79,7 +79,25 @@
                                           </ImageView>
                                        </graphic>
                           </Button>
-                                    <Pane prefHeight="326.0" prefWidth="266.0" />
+
+
+                                     <Button fx:id="btnAppointment" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="265.0" styleClass="nav-btn" text="  Appointment">
+                                         <graphic>
+                                         </graphic>
+                                         <font>
+                                             <Font name="System Bold" size="12.0" />
+                                         </font>
+                                         <padding>
+                                             <Insets left="65.0" />
+                                         </padding>
+                                         <graphic>
+                                             <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                 <image>
+                                                     <Image url="@img/commande.png" />
+                                                 </image>
+                                             </ImageView>
+                                         </graphic>
+                                     </Button>
                                     <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="265.0" styleClass="nav-btn" text="  Logout">
                                        <graphic>
                                           <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
@@ -95,6 +113,40 @@
                                           <Insets left="65.0" />
                                        </padding>
                                     </Button>
+
+                                     <Button fx:id="btnQuizzes" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="265.0" styleClass="nav-btn" text="  Quizzes">
+                                         <graphic>
+                                         </graphic>
+                                         <font>
+                                             <Font name="System Bold" size="12.0" />
+                                         </font>
+                                         <padding>
+                                             <Insets left="65.0" />
+                                         </padding>
+                                         <graphic>
+                                             <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                 <image>
+                                                     <Image url="@img/commande.png" />
+                                                 </image>
+                                             </ImageView>
+                                         </graphic>
+                                     </Button>
+                                     <Pane prefHeight="226.0" prefWidth="266.0" />
+                                     <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="265.0" styleClass="nav-btn" text="  Logout">
+                                         <graphic>
+                                             <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                 <image>
+                                                     <Image url="@img/logout.png" />
+                                                 </image>
+                                             </ImageView>
+                                         </graphic>
+                                         <font>
+                                             <Font name="System Bold" size="12.0" />
+                                         </font>
+                                         <padding>
+                                             <Insets left="65.0" />
+                                         </padding>
+                                     </Button>
                                  </children>
                               </VBox>
                   </children>

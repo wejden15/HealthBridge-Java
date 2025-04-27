@@ -68,6 +68,7 @@ public class updateProduitController implements Initializable {
 
     private File selectedImageFile;
     private String imageName = null ;
+    private int productId;
 
     @FXML
     void ajouterImage(ActionEvent event) throws IOException {
@@ -90,22 +91,11 @@ public class updateProduitController implements Initializable {
         }
     }
 
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        txtType.getItems().addAll("Cosmétique","Paramedical","Visage","Cheveux","etc");
-
-        /*Remplissage du formulaire à partit de la bd*/
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("itemProduit.fxml"));
+    public void setProductId(int id) {
+        this.productId = id;
         try {
-            AnchorPane anchorPane = fxmlLoader.load();
-            HBox hBox = (HBox) anchorPane.getChildren().get(0);
-            itemProduitController item = fxmlLoader.getController();
             ServiceProduit sp = new ServiceProduit();
-
-
-            prod = sp.getById(item.getId());
+            prod = sp.getById(productId);
 
             txtNom.setText(prod.getNom());
             txtType.setValue(prod.getType());
@@ -124,17 +114,16 @@ public class updateProduitController implements Initializable {
             txtDate.setValue(ConvertedDate);
             txtDescription.setText(prod.getDescription());
             imageName = prod.getImage();
-            imageInput.setImage(new Image("C:\\Users\\telli\\OneDrive\\Bureau\\piJava\\src\\main\\java\\uploads\\"+imageName));
-
-        } catch (IOException ex) {
-            Logger.getLogger(itemCommandeController.class.getName()).log(Level.SEVERE, null, ex);
+            imageInput.setImage(new Image("file:src/main/java/uploads/"+imageName));
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
-
-
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        txtType.getItems().addAll("Cosmétique","Paramedical","Visage","Cheveux","etc");
+    }
 
     @FXML
     void UpdateProduit(ActionEvent event) {

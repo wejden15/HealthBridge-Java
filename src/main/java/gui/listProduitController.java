@@ -1,12 +1,16 @@
 package gui;
 
 import entities.Produit;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import services.ServiceProduit;
 
 import java.io.IOException;
@@ -24,9 +28,8 @@ public class listProduitController implements Initializable {
     @FXML
     private VBox vBox;
 
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void refreshProductList() {
+        vBox.getChildren().clear(); // Clear existing products
         try {
             ServiceProduit sp = new ServiceProduit();
             List<Produit> prods = sp.Show();
@@ -47,5 +50,20 @@ public class listProduitController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        refreshProductList();
+    }
+
+
+    @FXML
+    void open_Stat(ActionEvent event) throws IOException{
+        Parent fxml= FXMLLoader.load(getClass().getResource("Statistiques.fxml"));
+        Stage stage = new Stage();
+        stage.setTitle("Statistiques des Produits");
+        stage.setScene(new Scene(fxml));
+        stage.showAndWait();
     }
 }

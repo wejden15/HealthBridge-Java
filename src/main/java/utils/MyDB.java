@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class MyDB {
 
-    final String url="jdbc:mysql://localhost:3306/wassim-db";
+    final String url="jdbc:mysql://localhost:3306/normal";
     final String username="root";
     final String pwd="";
     private Connection conx;

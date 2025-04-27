@@ -3,12 +3,16 @@ package gui;
 import entities.Produit;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import services.ServiceProduit;
 
 import java.io.File;
@@ -123,8 +127,8 @@ public class addProduitController implements Initializable {
 
     private void ajouterProduit() {
         // From Formulaire
-        String nom = txtNom.getText();
-        String description = txtDescription.getText();
+        String nom = filterWords(txtNom.getText());
+        String description = filterWords(txtDescription.getText());
         String type = txtType.getValue();
         Date date = null;
         try {
@@ -139,10 +143,29 @@ public class addProduitController implements Initializable {
         float prix = Float.parseFloat(txtPrix.getText());
         String image = imageName;
 
-
         Produit prod = new Produit(
                 nom, description, type, date, prix, image);
         ServiceProduit sp = new ServiceProduit();
         sp.ajouter(prod);
+    }
+
+    public static String filterWords(String text) {
+        String[] filterWords = {"ahla", "word2", "word3"};
+        String[] data = text.split("\\s+");
+        String str = "";
+        for (String s : data) {
+            boolean g = false;
+            for (String lib : filterWords) {
+                if (s.equals(lib)) {
+                    String t = "";
+                    for (int i = 0; i < s.length(); i++) t += "*";
+                    str += t + " ";
+                    g = true;
+                    break;
+                }
+            }
+            if (!g) str += s + " ";
+        }
+        return str.trim();
     }
 }

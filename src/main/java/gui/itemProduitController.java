@@ -68,7 +68,7 @@ public class itemProduitController implements Initializable {
         labelType.setText(prod.getType());
         labelDate.setText(String.valueOf(prod.getDate()));
         labelPrix.setText(String.valueOf(prod.getPrix())+" DT");
-        labelImage.setImage(new Image("C:\\Users\\telli\\OneDrive\\Bureau\\piJava\\src\\main\\java\\uploads\\"+prod.getImage()));
+        labelImage.setImage(new Image("file:src/main/java/uploads/"+prod.getImage()));
         this.id=prod.getId();
     }
 
@@ -79,10 +79,13 @@ public class itemProduitController implements Initializable {
 
     @FXML
     void open_UpdateProduit(ActionEvent event) throws IOException {
-        Parent fxml= FXMLLoader.load(getClass().getResource("updateProduit.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("updateProduit.fxml"));
+        Parent root = loader.load();
+        updateProduitController controller = loader.getController();
+        controller.setProductId(this.id);
         Stage stage = new Stage();
         stage.setTitle("Update Produit");
-        stage.setScene(new Scene(fxml));
+        stage.setScene(new Scene(root));
         stage.showAndWait();
     }
 
