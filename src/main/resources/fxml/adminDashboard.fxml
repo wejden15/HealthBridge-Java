@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:controller="tn.esprit.controller.AdminDashboardController"
+            xmlns:fx="http://javafx.com/fxml"
+            xmlns="http://javafx.com/javafx"
+            stylesheets="@../css/style.css">
+
+    <BorderPane styleClass="content">
+        <!-- Sidebar -->
+        <left>
+            <VBox fx:id="sidebar" spacing="15" prefWidth="200" styleClass="sidebar">
+                <ImageView fx:id="logoImage" fitWidth="160" fitHeight="60"/>
+                <Button fx:id="toggleButton" text="≡" onAction="#toggleSidebar" styleClass="burger-button"/>
+                <Button text="➕ Ajouter Événement" onAction="#goToAddEvent" styleClass="sidebar-button"/>
+                <Button text="📋 Liste des Événements" onAction="#goToEventList" styleClass="sidebar-button"/>
+                <Button text="📊 Statistiques" onAction="#goToStats" styleClass="sidebar-button"/>
+                <Button text="💳 Voir Donateurs" onAction="#goToDonors" styleClass="sidebar-button"/>
+                <Separator/>
+                <Button text="⬅️ Retour à l'accueil" onAction="#goToHome" styleClass="sidebar-button"/>
+            </VBox>
+        </left>
+
+        <!-- Main Content -->
+        <center>
+            <StackPane fx:id="mainContent">
+                <Label text="Bienvenue dans le tableau de bord administrateur"
+                       style="-fx-font-size: 20px; -fx-text-fill: #444;"/>
+            </StackPane>
+        </center>
+    </BorderPane>
+</AnchorPane>

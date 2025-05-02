@@ -1,0 +1,367 @@
+/* style.css - HealthBridge App */
+
+/* General Background */
+.root {
+    -fx-background-image: url("/img/background.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+}
+
+/* Header */
+.header {
+    -fx-background-color: #2196F3;
+    -fx-padding: 20px;
+}
+
+.header-title {
+    -fx-text-fill: white;
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px;
+}
+
+/* Sidebar */
+.sidebar {
+    -fx-background-color: #2c3e50;
+    -fx-padding: 20px;
+    -fx-spacing: 20px;
+    -fx-alignment: top-center;
+}
+
+.sidebar-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-padding: 10 20;
+    -fx-alignment: center-left;
+    -fx-cursor: hand;
+}
+
+.sidebar-button:hover {
+    -fx-background-color: #34495e;
+}
+
+.sidebar-button-active {
+    -fx-background-color: #2980b9;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+}
+
+/* Burger Button */
+.burger-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 24px;
+    -fx-cursor: hand;
+    -fx-alignment: center;
+}
+.burger-button:hover {
+    -fx-background-color: #34495e;
+}
+
+/* Content Area */
+.content {
+    -fx-background-color: rgba(255,255,255,0.8);
+    -fx-padding: 30px;
+    -fx-spacing: 20px;
+    -fx-background-radius: 10px;
+    -fx-alignment: center;
+}
+
+/* General Buttons */
+.button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-background-radius: 30px;
+    -fx-padding: 10 20;
+    -fx-font-size: 16px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0.5, 0, 0);
+}
+
+/* Special Button Hover */
+.button:hover {
+    -fx-background-color: #45a049;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+/* Red Button (Delete or Dangerous Action) */
+.button-red {
+    -fx-background-color: #F44336;
+    -fx-background-radius: 30px;
+    -fx-font-size: 16px;
+    -fx-text-fill: white;
+    -fx-padding: 10 20;
+}
+
+/* ListView (Event List) */
+.list-view {
+    -fx-background-color: white;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-border-color: #ddd;
+    -fx-border-width: 1px;
+    -fx-padding: 10px;
+    -fx-font-size: 15px;
+}
+
+/* TextFields (including Search Bar) */
+.text-field {
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-background-color: white;
+    -fx-border-color: #ccc;
+    -fx-border-width: 1px;
+    -fx-padding: 10 15;
+    -fx-font-size: 16px;
+}
+
+/* QR Code ImageView */
+.image-view {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 10, 0.5, 0, 0);
+    -fx-background-radius: 10px;
+    -fx-padding: 10px;
+}
+
+/* TableView (admin zones) */
+.table-view {
+    -fx-border-color: #ddd;
+    -fx-border-width: 1px;
+    -fx-background-color: #ffffff;
+}
+
+.table-column {
+    -fx-alignment: CENTER;
+}
+
+/* DatePickers */
+.date-picker {
+    -fx-background-radius: 8;
+    -fx-background-color: white;
+    -fx-border-color: #ccc;
+    -fx-border-radius: 8;
+    -fx-padding: 5 10;
+    -fx-font-size: 14px;
+}
+/* ListView modern style */
+.list-view {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 10px;
+}
+
+.list-cell {
+    -fx-background-color: white;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-padding: 10 20;
+    -fx-border-color: #ddd;
+    -fx-border-width: 1px;
+    -fx-font-size: 16px;
+    -fx-text-fill: #333;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 4, 0.5, 0, 2);
+    -fx-margin-bottom: 10px; /* Visual margin between cards */
+}
+
+.list-cell:filled:selected, .list-cell:filled:selected:hover {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+}
+
+.list-cell:filled:hover {
+    -fx-background-color: #f0f0f0;
+    -fx-cursor: hand;
+}
+.sidebar {
+    -fx-background-color: #2c3e50;
+    -fx-padding: 20px;
+    -fx-alignment: top-center;
+    -fx-spacing: 12px;
+}
+
+.sidebar-button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 10px;
+    -fx-pref-width: 160;
+    -fx-padding: 8 14;
+    -fx-cursor: hand;
+}
+
+.sidebar-button:hover {
+    -fx-background-color: #388E3C;
+}
+
+.sidebar-button-active {
+    -fx-background-color: #1E88E5;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-pref-width: 160;
+    -fx-background-radius: 10px;
+}
+.chart-pie-label {
+    -fx-font-size: 14px;
+    -fx-fill: white;
+}
+.sidebar {
+    -fx-background-color: #2c3e50;
+    -fx-padding: 30px 20px;
+    -fx-pref-width: 220px;
+}
+
+.sidebar-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-alignment: center-left;
+    -fx-padding: 10 15;
+    -fx-cursor: hand;
+}
+
+.sidebar-button:hover {
+    -fx-background-color: #34495e;
+}
+/* General Page Background */
+.root {
+    -fx-background-image: url("/img/background.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+/* Table View */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 10px;
+    -fx-padding: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0.3, 0, 2);
+}
+
+.table-column {
+    -fx-alignment: CENTER;
+    -fx-font-size: 14px;
+}
+
+/* TextField Search */
+.text-field {
+    -fx-font-size: 14px;
+    -fx-padding: 8 16;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #cccccc;
+}
+
+/* Buttons General */
+.button {
+    -fx-font-size: 14px;
+    -fx-background-radius: 8;
+    -fx-padding: 8 18;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 3, 0.2, 0, 1);
+}
+
+/* Specific Color Buttons */
+.button-blue {
+    -fx-background-color: #03A9F4;
+    -fx-text-fill: white;
+}
+
+.button-cyan {
+    -fx-background-color: #00BCD4;
+    -fx-text-fill: white;
+}
+
+.button-red {
+    -fx-background-color: #E53935;
+    -fx-text-fill: white;
+}
+
+.button-grey {
+    -fx-background-color: #9E9E9E;
+    -fx-text-fill: white;
+}
+
+.button-back {
+    -fx-background-color: #F44336;
+    -fx-text-fill: white;
+}
+
+/* Hover Effect */
+.button:hover {
+    -fx-opacity: 0.85;
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+/* Table Headers */
+.table-view .column-header-background {
+    -fx-background-color: #f4f4f4;
+}
+.button {
+    -fx-font-size: 14px;
+    -fx-background-radius: 8;
+    -fx-padding: 8 18;
+    -fx-cursor: hand;
+}
+
+.button-blue {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+}
+
+.button-red {
+    -fx-background-color: #F44336;
+    -fx-text-fill: white;
+}
+
+.text-field, .date-picker {
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #ccc;
+    -fx-font-size: 14px;
+    -fx-padding: 6 10;
+}
+
+.content {
+    -fx-background-color: rgba(255, 255, 255, 0.9);
+    -fx-background-radius: 10;
+    -fx-padding: 20px;
+}
+.button {
+    -fx-font-size: 14px;
+    -fx-padding: 8 20;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+
+.button-blue {
+    -fx-background-color: #2196F3;
+    -fx-text-fill: white;
+}
+
+.button-cyan {
+    -fx-background-color: #00BCD4;
+    -fx-text-fill: white;
+}
+
+.button-red {
+    -fx-background-color: #F44336;
+    -fx-text-fill: white;
+}
+
+.button-gray {
+    -fx-background-color: #9E9E9E;
+    -fx-text-fill: white;
+}
+
+.text-field {
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #ccc;
+    -fx-font-size: 14px;
+    -fx-padding: 6 10;
+}

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="tn.esprit.controller.EvenementController"
+            stylesheets="@../css/style.css"
+            prefHeight="450.0" prefWidth="600.0"
+            styleClass="content">
+
+    <!-- Titre -->
+    <Label layoutX="160.0" layoutY="30.0" text="➕ Ajouter un Événement"
+           style="-fx-font-size: 24px; -fx-text-fill: #333;" />
+
+    <!-- Nom -->
+    <Label layoutX="80.0" layoutY="100.0" text="Nom :" />
+    <TextField fx:id="nomField" layoutX="180.0" layoutY="95.0"
+               prefWidth="300.0" styleClass="text-field"/>
+
+    <!-- Catégorie -->
+    <Label layoutX="80.0" layoutY="160.0" text="Catégorie :" />
+    <TextField fx:id="categorieField" layoutX="180.0" layoutY="155.0"
+               prefWidth="300.0" styleClass="text-field"/>
+
+    <!-- Date -->
+    <Label layoutX="80.0" layoutY="220.0" text="Date :" />
+    <DatePicker fx:id="datePicker" layoutX="180.0" layoutY="215.0"
+                prefWidth="300.0" styleClass="date-picker"/>
+
+    <!-- Ajouter Button -->
+    <Button layoutX="180.0" layoutY="300.0" text="✅ Ajouter"
+            onAction="#ajouterEvenement" styleClass="button button-blue" />
+
+    <!-- Retour Button -->
+    <Button layoutX="320.0" layoutY="300.0" text="↩️ Retour"
+            onAction="#retourAccueil" styleClass="button button-red" />
+
+</AnchorPane>

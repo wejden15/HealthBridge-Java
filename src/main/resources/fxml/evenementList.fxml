@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="tn.esprit.controller.EvenementController"
+            stylesheets="@../css/style.css"
+            style="-fx-background-color: #f0f4f8;">
+
+    <!-- Container for centering everything -->
+    <VBox alignment="CENTER" spacing="20" layoutX="150" layoutY="50" prefWidth="1065" prefHeight="650">
+        <!-- Search Bar -->
+        <HBox spacing="10" alignment="CENTER">
+            <TextField fx:id="searchField"
+                       promptText="Rechercher par nom ou catégorie..."
+                       onKeyTyped="#rechercherEvenement"
+                       styleClass="text-field"
+                       prefWidth="300"/>
+            <Button text="Réinitialiser"
+                    onAction="#reinitialiserRecherche"
+                    styleClass="button-gray" />
+        </HBox>
+
+        <!-- Table -->
+        <TableView fx:id="evenementTable" prefWidth="800" prefHeight="350">
+            <columns>
+                <TableColumn fx:id="idColumn" text="ID" prefWidth="80"/>
+                <TableColumn fx:id="nomColumn" text="Nom" prefWidth="200"/>
+                <TableColumn fx:id="categorieColumn" text="Catégorie" prefWidth="200"/>
+                <TableColumn fx:id="dateColumn" text="Date" prefWidth="200"/>
+            </columns>
+        </TableView>
+
+        <!-- Filter Buttons -->
+        <HBox spacing="15" alignment="CENTER">
+            <Button text="📅 Événements à venir"
+                    onAction="#filtrerEvenementsAVenir"
+                    styleClass="button-blue"/>
+            <Button text="⏳ Événements passés"
+                    onAction="#filtrerEvenementsPasses"
+                    styleClass="button-cyan"/>
+            <Button text="🗑 Supprimer Événement"
+                    onAction="#supprimerEvenement"
+                    styleClass="button-red"/>
+            <!-- Bouton Modifier -->
+            <Button layoutX="500.0" layoutY="500.0"
+                    mnemonicParsing="false"
+                    text="Modifier Événement"
+                    onAction="#modifierEvenement"
+                    style="-fx-background-color: #FFC107; -fx-text-fill: white;" />
+
+        </HBox>
+
+        <!-- Return -->
+        <Button text="↩️ Retour"
+                onAction="#retourAccueil"
+                styleClass="button-red" />
+    </VBox>
+</AnchorPane>

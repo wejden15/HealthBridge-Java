@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.XYChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="tn.esprit.controller.EvenementController"
+            prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #f0f4f8;">
+
+    <!-- Bouton Retour -->
+    <Button layoutX="20.0" layoutY="20.0"
+            mnemonicParsing="false"
+            text="Retour Accueil"
+            onAction="#retourAccueil"
+            style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+
+    <!-- Graphique à barres -->
+    <BarChart fx:id="barChart"
+              layoutX="50.0" layoutY="70.0"
+              prefWidth="600.0" prefHeight="400.0">
+        <xAxis>
+            <CategoryAxis label="Catégorie"/>
+        </xAxis>
+        <yAxis>
+            <NumberAxis label="Nombre d'événements"/>
+        </yAxis>
+    </BarChart>
+
+</AnchorPane>

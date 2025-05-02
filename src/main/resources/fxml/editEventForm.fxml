@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="tn.esprit.controller.EditEventController"
+            prefWidth="600" prefHeight="400"
+            style="-fx-background-color: #f4f4f4;">
+
+    <Label layoutX="200" layoutY="20" text="Modifier un Événement"
+           style="-fx-font-size: 20px; -fx-text-fill: #444;" />
+
+    <Label layoutX="80" layoutY="80" text="Nom :" />
+    <TextField fx:id="nomField" layoutX="180" layoutY="75" prefWidth="300"/>
+
+    <Label layoutX="80" layoutY="140" text="Catégorie :" />
+    <TextField fx:id="categorieField" layoutX="180" layoutY="135" prefWidth="300"/>
+
+    <Label layoutX="80" layoutY="200" text="Date :" />
+    <DatePicker fx:id="datePicker" layoutX="180" layoutY="195" prefWidth="300"/>
+
+    <Button text="Modifier" layoutX="240" layoutY="270"
+            onAction="#modifierEvenement"
+            style="-fx-background-color: #4CAF50; -fx-text-fill: white;" />
+</AnchorPane>

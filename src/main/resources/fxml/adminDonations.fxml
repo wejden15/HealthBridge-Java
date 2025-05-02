@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      stylesheets="@../css/style.css"
+      fx:controller="tn.esprit.controller.AdminDonationController"
+      spacing="20" alignment="CENTER" style="-fx-padding: 30; -fx-background-color: #f9f9f9;">
+
+    <Label text="💸 Liste des Donations par Événement"
+           style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+    <TableView fx:id="donationTable" prefHeight="400" prefWidth="700">
+
+
+        <Label text="💰 Totaux par événement :" style="-fx-font-weight: bold;"/>
+
+        <TextArea fx:id="totalByEventArea"
+                  editable="false"
+                  prefHeight="150"
+                  prefWidth="700"
+                  style="-fx-font-family: 'Consolas'; -fx-font-size: 13px;" />
+
+        <columns>
+            <TableColumn fx:id="eventNameColumn" text="Événement" prefWidth="150" />
+            <TableColumn fx:id="donorNameColumn" text="Donateur" prefWidth="150" />
+            <TableColumn fx:id="amountColumn" text="Montant (TND)" prefWidth="120" />
+            <TableColumn fx:id="commentColumn" text="Commentaire" prefWidth="180" />
+            <TableColumn fx:id="dateColumn" text="Date" prefWidth="120" />
+        </columns>
+    </TableView>
+    <PieChart fx:id="donationPieChart"
+              prefHeight="400"
+              prefWidth="600"
+              title="Répartition des Donations par Événement" />
+    <BarChart fx:id="donationBarChart"
+              title="Comparaison des Donations par Événement"
+              prefWidth="600" prefHeight="400">
+
+        <xAxis>
+            <CategoryAxis label="Événement"/>
+        </xAxis>
+        <yAxis>
+            <NumberAxis label="Montant Total (TND)"/>
+        </yAxis>
+    </BarChart>
+
+    <Button text="🔙 Retour" onAction="#retourAccueil"
+            style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 8 20;"/>
+    <Button text="📥 Exporter en PDF"
+            onAction="#exportToPDF"
+            style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;"/>
+
+</VBox>
