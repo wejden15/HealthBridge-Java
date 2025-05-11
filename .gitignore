@@ -5,3 +5,7 @@ target/
 tokens/
 target/
 *.class
+target/
+*.class
+src/main/resources/client_secret_*.json
+tokens/
