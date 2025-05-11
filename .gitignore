@@ -3,3 +3,5 @@ tokens/
 src/main/resources/client_secret_*.json
 target/
 tokens/
+target/
+*.class
