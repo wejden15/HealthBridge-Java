@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7096e495-6530-4069-ab8e-b28d571d29af" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../src/main/java/services/DonationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/java/services/EvenementService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/java/services/IEvenementService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/resources/css/style1.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/entities/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/gui/AfficherAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/gui/AfficherAppointmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/gui/AjouterAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/gui/AjouterAppointmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/gui/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/gui/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/gui/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/gui/HelloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/gui/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/gui/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/gui/MainAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/gui/MainAppointmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/gui/addProduitController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/gui/addProduitController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/gui/listCommandeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/gui/listCommandeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/gui/listProduitController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/gui/listProduitController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/gui/listProduitFrontCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/gui/listProduitFrontCardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/gui/listProduitFrontController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/gui/listProduitFrontController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/gui/AjouterAppointment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/gui/AjouterAppointment.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/gui/MainAppointment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/gui/MainAppointment.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/gui/calendar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/gui/calendar.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/gui/dashboard_patient.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/gui/dashboard_patient.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/gui/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/gui/hello-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/gui/listCommande.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/gui/listCommande.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/gui/listProduit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/gui/listProduit.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/gui/listProduitFront.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/gui/listProduitFront.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/gui/listProduitFrontCard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/gui/listProduitFrontCard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tokens/StoredCredential" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2wxDNP7r3AlG0RldPD50G1XJkr7" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.codeium.enabled": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/telli/Downloads/integrationV3/integrationV3",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.22855.74" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.22855.74" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7096e495-6530-4069-ab8e-b28d571d29af" name="Changes" comment="" />
+      <created>1746974290557</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1746974290557</updated>
+      <workItem from="1746974291639" duration="45000" />
+      <workItem from="1746974352898" duration="24000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
